@@ -1,0 +1,80 @@
+Theory:
+The Java FlowLayout class is used to arrange the components in a line,
+one after another (in a flow). It is the default layout of the applet or panel.
+Fields of FlowLayout class
+• public static final int LEFT
+• public static final int RIGHT
+• public static final int CENTER
+• public static final int LEADING
+• public static final int TRAILING
+Constructors of FlowLayout class
+• FlowLayout(): creates a flow layout with centred alignment and a default
+5 unit horizontal and vertical gap.
+• FlowLayout(int align): creates a flow layout with the given alignment
+and a default 5 unit horizontal and vertical gap.
+• FlowLayout(int align, int hgap, int vgap): creates a flow layout with the
+given alignment and the given horizontal and vertical gap.
+Code:
+import java.awt.*;
+import javax.swing.*;
+ public class FlowLayoutExample
+{
+ JFrame frameObj;
+ FlowLayoutExample() // constructor
+{
+ frameObj = new JFrame(); // creating a frame object
+// creating the buttons
+ JButton b1 = new JButton("1");
+JButton b2 = new JButton("2");
+ JButton b3 = new JButton("3");
+ JButton b4 = new JButton("4");
+ JButton b5 = new JButton("5");
+ JButton b6 = new JButton("6");
+ JButton b7 = new JButton("7");
+ JButton b8 = new JButton("8");
+ JButton b9 = new JButton("9");
+ JButton b10 = new JButton("10");
+
+ // adding the buttons to frame
+ frameObj.add(b1); frameObj.add(b2); frameObj.add(b3);
+frameObj.add(b4);
+ frameObj.add(b5); frameObj.add(b6); frameObj.add(b7);
+frameObj.add(b8);
+ frameObj.add(b9); frameObj.add(b10);
+
+// parameter less constructor is used therefore, alignment is center &
+horizontal as well as the vertical gap is 5 units.
+ frameObj.setLayout(new FlowLayout());
+ frameObj.setSize(300, 300);
+ frameObj.setVisible(true);
+}
+public static void main(String argvs[])
+{
+ new FlowLayoutExample();
+}
+} 
+ooooooooooooooooooooooooooooorrrrrrrrrrrrrrrrrrrrrrrrrrr
+import java.awt.*;
+import javax.swing.*;
+public class MyFlowLayout
+{
+JFrame f=new JFrame();
+MyFlowLayout()
+{
+ JButton b1=new JButton("1");
+ JButton b2=new JButton("2");
+ JButton b3=new JButton("3");
+ JButton b4=new JButton("4");
+ JButton b5=new JButton("5");
+// adding buttons to the frame
+ f.add(b1); f.add(b2); f.add(b3); f.add(b4); f.add(b5);
+// setting flow layout of right alignment
+ f.setLayout(new FlowLayout(FlowLayout.RIGHT));
+ f.setSize(300,300);
+ f.setVisible(true);
+}
+public static void main(String[] args)
+{
+ new MyFlowLayout();
+}
+}
