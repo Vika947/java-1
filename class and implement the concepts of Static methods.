@@ -1,0 +1,32 @@
+class Cllg
+{
+ int rollno;
+ String name;
+ static String college="IT";
+ static void change()
+{
+ college="LORDS";
+ }
+ Cllg(int r,String n)
+{
+ rollno=r;
+ name=n;
+ }
+ void display()
+{
+ System.out.println(rollno+ " " +name+ " "+college);
+ }
+}
+public class Test
+{
+ public static void main(String args[])
+{
+ Cllg.change();
+ Cllg s1=new Cllg(111,"karan");
+ Cllg s2=new Cllg(222,"Neha");
+ Cllg s3=new Cllg(333,"Rohit");
+ s1.display();
+ s2.display();
+ s3.display();
+ }
+}
