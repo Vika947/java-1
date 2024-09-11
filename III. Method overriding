@@ -1,0 +1,17 @@
+class Vehical {
+ void run(){
+ System.out.println("vehical run fast");
+ }
+}
+class bike extends Vehical{
+ @Override
+ void run(){
+ System.out.println("bike run fast");
+ }
+}
+public class road {
+ public static void main(String args[]){
+ bike b=new bike();
+ b.run();
+ }
+}
