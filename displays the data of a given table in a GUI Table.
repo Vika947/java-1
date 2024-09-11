@@ -1,0 +1,113 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+public class GFG {
+ // Step 1: Define the Connection class
+ static class Connection {
+static java.sql.Connection connectDB() throws SQLException {
+// Modify following parameters with your database credentials
+String url = "jdbc:mysql://localhost:3306/your_database_name";
+ String username = "your_username";
+ String password = "your_password";
+
+return DriverManager.getConnection(url, username, password);
+ }
+ }
+ // Step 2: Main driver method
+ public static void main(String[] args) {
+// Step 3: Making connection using Connection type and inbuilt
+function
+ PreparedStatement p = null;
+ ResultSet rs = null;
+try {
+// Step 4: Making the database connection
+Connection con = new Connection();
+java.sql.Connection connection = con.connectDB();
+// Step 5: SQL command data stored in String datatype
+ String sql = "SELECT * FROM cuslogin";
+ p = connection.prepareStatement(sql);
+ rs = p.executeQuery();
+// Step 6: Printing ID, name, email of customers from SQL
+ System.out.println("id\t\tname\t\temail");
+// Step 7: Condition check
+ while (rs.next()) {
+ int id = rs.getInt("id");
+ String name = rs.getString("name");
+ String email = rs.getString("email");
+ System.out.println(id + "\t\t" + name + "\t\t" + email);
+ }
+ } catch (SQLException e) {
+ // Step 8: Catch block to handle exceptions
+ System.out.println(e);
+ }
+ }
+}
+               [[[[[OR (Alternative Method)]]]]]]]]]]]]
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+public class JDBCGUITableExample {
+ public static void main(String[] args) {
+ JFrame frame = new JFrame("Database Table Display");
+ frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+// JDBC connection parameters
+String url = "jdbc:mysql://localhost:3306/your_database_name";
+ String username = "your_username";
+ String password = "your_password";
+// Database table name
+String tableName = "your_table_name";
+// Creating a DefaultTableModel for the JTable
+ DefaultTableModel tableModel = new DefaultTableModel();
+// Adding columns to the model
+ tableModel.addColumn("Column1");
+ tableModel.addColumn("Column2");
+// Add more columns as needed...
+// Creating the JTable
+ JTable jTable = new JTable(tableModel);
+// Creating a JScrollPane to hold the JTable
+ JScrollPane jScrollPane = new JScrollPane(jTable);
+// Adding the JScrollPane to the frame
+ frame.getContentPane().add(jScrollPane);
+ try {
+// Establishing a database connection
+Connection connection = DriverManager.getConnection(url,
+username, password);
+// Creating a Statement object to execute SQL queries
+ Statement statement = connection.createStatement();
+// Executing a SQL query to fetch data from the table
+ String query = "SELECT * FROM " + tableName;
+ ResultSet resultSet = statement.executeQuery(query);
+// Iterating through the result set and adding data to the JTable
+ while (resultSet.next()) {
+Object[] row = new Object[2];
+// Assuming there are two columns in the example
+row[0] = resultSet.getObject(1);
+// Adjust index based on your table structure
+row[1] = resultSet.getObject(2);
+// Add more rows as needed...
+ tableModel.addRow(row);
+ }
+// Closing resources
+ resultSet.close();
+ statement.close();
+ connection.close();
+ } catch (Exception e) {
+ e.printStackTrace();
+ }
+// Setting up the frame
+ frame.setSize(400, 300);
+ frame.setLocationRelativeTo(null);
+ frame.setVisible(true);
+ }
+}
+
+
+            
+            
